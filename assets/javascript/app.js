@@ -23,17 +23,20 @@ var questionsArray = [{
 //variable to run through questions array and increase on next question
 var counter = 0;
 var correctGuesses = 0;
-
-
+var totalGuesses = 2;
+var allTheGuesses = 2;
+console.log("user total guesses: " + totalGuesses);
 
 //initialize variables
 var theQuestion = questionsArray[counter].question;
 var theAnswers = questionsArray[counter].allAnswers;
 var theCorrectAnswer = questionsArray[counter].correctAnswer;
-console.log(theCorrectAnswer);
+console.log("the correct answer value: " + theCorrectAnswer);
 
 
 function displayStuff(){
+
+	counter = 0;
 	//set the question to the html div
 	$('.thequestion').text(theQuestion);
 
@@ -41,31 +44,112 @@ function displayStuff(){
 	var yourChoices;
 	for (var i = 0; i < theAnswers.length; i++) {
 		yourChoices = theAnswers[i];
+
 		//add each answer as a list item with a radio button, append to answers in html	
-		$('<li><input type = "checkbox" val = '+ i +' />' + yourChoices + '</li>').appendTo($('.answers'));		
+		$('<li><input type = "checkbox" value = '+ i +' />' + yourChoices + '</li>').appendTo($('.answers'));
+
 	//closes for loop	
 	}
 //closes displayStuff()	
 }	
-
-//create timer function
-
-
-
 	
 $(document).ready(function(){
-
-	//display answer and choices 
-	displayStuff();
-
-$('.btn').click(function(){
-	z = $('input:checked').val();
-	console.log(z);
-})
 	
 
+	//hide the message div
+	$('#message').hide();
 
+	
+
+	$('#btn').click(startGame);
 
 
 //closing tags for doc ready
 });
+
+function startGame(){
+	$('#btn').hide();
+
+	setTimeout(displayStuff, 3000);
+
+	//display answer and choices 
+	displayStuff();
+
+	//on input click
+	$('input').click(function(){
+	
+		var theValue = $('input:checked').val();
+		console.log("the value of selected input: " + theValue);
+
+		if(theValue == theCorrectAnswer){
+			correctGuesses++;
+			goodGuess();
+			totalGuesses--;
+			clearInterval(displayStuff);
+
+		} else if (timeOut === 0){
+			wrongTimeUp();
+			totalGuesses--;
+			
+		} else{
+			totalGuesses--;
+			wrongTimeUp();
+			clearInterval(displayStuff);
+			
+		}
+
+	});
+}
+
+
+
+function nextQuestion(){
+	counter++;
+
+	$('#btn').hide();
+
+	setInterval(displayStuff, 3000);
+
+	//display answer and choices 
+
+	//on input click
+	$('input').click(function(){
+	
+		var theValue = $('input:checked').val();
+		console.log("the value of selected input: " + theValue);
+
+		if(theValue == theCorrectAnswer){
+			correctGuesses++;
+			goodGuess();
+			totalGuesses--;
+			nextQuestion();
+			
+		} else{
+			totalGuesses--;
+			wrongTimeUp();
+			nextQuestion();
+			
+		}
+
+	});
+}
+
+
+function goodGuess (){
+	setTimeout(nextQuestion, 2000);
+	$('.wrapper').hide();
+	$('#message').text("That's right!");
+	$('#message').show();
+}
+
+function wrongTimeUp (){
+	setTimeout(nextQuestion, 2000);
+	$('.wrapper').hide();
+	$('#message').text("Sorry, the right answer is " + theCorrectAnswer + ".");
+	$('#message').show();
+}
+
+function gameOver(){
+	$('#message').text("You got: " +correctGuesses + " / " + allTheGuesses + "right!");
+	$('#message').show();
+}
