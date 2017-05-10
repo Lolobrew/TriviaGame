@@ -8,6 +8,9 @@ $(document).ready(function(){
 	$('#theTimer').hide();
 	$('#bottom').hide();
 	$('#right').hide();
+	$('#right2').hide();
+	$('#right3').hide();
+	$('#left2').hide();
 	//start the quiz
 	$('#startBtn').click(function(){
 
@@ -18,6 +21,9 @@ $(document).ready(function(){
 	$('.instructions').hide();
 	$('#bottom').show();
 	$('#right').show();
+	$('#right2').show();
+	$('#right3').show();
+	$('#left2').show();
 
 	
 
@@ -81,6 +87,9 @@ $(document).ready(function(){
         			$('.wrapper').hide();
         			$('#theTimer').hide();
         			$('#bottom').hide();
+        			$('#right2').hide();
+        			$('#left2').hide();
+        			$('#right3').hide();
     				$('#message').text("Whoah there Ultron! You missed a couple. You got  " + correct + " / 10!");
     				$('#message').show();
     				//if correct answers = 10
@@ -89,6 +98,9 @@ $(document).ready(function(){
     				$('.wrapper').hide();
     				$('#theTimer').hide();
     				$('#bottom').hide();
+    				$('#right2').hide();
+    				$('#right3').hide();
+    				$('#left2').hide();
 	    			$('#message').text("You're quicker than Quicksilver! You got  " + correct + " / 10!");
 	    			$('#message').show();
         		}
@@ -105,6 +117,8 @@ $(document).ready(function(){
     		$('.wrapper').hide();
     		$('#theTimer').hide();
     		$('#bottom').hide();
+    		$('#right2').hide();
+    		$('#right3').hide();
     		$('#message').text("Uh-oh! Time is up and The Time-Keepers have you now! You got  " + correct + " / 10!");
     		$('#message').show();
 		} else {

@@ -4,7 +4,24 @@
 #left img {
 	width: 50%;
 	height:50%;
+}
 
+#left2 img{
+	position: relative;
+	top: 5px;
+	float: left;
+}
+
+#right2 img {
+float: right;
+}
+
+#right3 img {
+	position: absolute;
+	top: 1350px;
+	left: 1050px;
+	height: 300px;
+	width: 350px;
 }
 
 #right img {
@@ -17,8 +34,8 @@
 	width: 35%;
 	height:35%;
 	position: relative;
-	top: 1200px;
-	left: 160px;
+	top: 1035px;
+
 }
 
 #left{
