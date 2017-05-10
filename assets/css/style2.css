@@ -1,0 +1,95 @@
+
+
+
+#left img {
+	width: 50%;
+	height:50%;
+
+}
+
+#right img {
+	float: right;
+
+}
+
+#bottom img {
+	clear: both;
+	width: 35%;
+	height:35%;
+	position: relative;
+	top: 1200px;
+	left: 160px;
+}
+
+#left{
+	float: left;
+	margin-right: 0px;
+}
+
+
+ul{
+	padding-top: 40px;
+}
+
+
+li{
+	font-size: 18px;
+	display: inline;
+	padding-right: 20px;
+}
+
+.wrapper {
+	clear: left;
+	position: absolute;
+	text-align: center;
+	margin-top: 50px;
+	margin-left: 350px;
+}
+
+h2{
+	font-family: 'Bangers', cursive;
+	font-size: 24px;
+}
+
+.starter{
+	text-align: center;
+	margin-top: 50px;
+}
+
+#startBtn{
+	font-family: 'Bangers', cursive;
+	font-size: 40px;
+	background-color: lawngreen;
+	color: purple;
+	height: 100px;
+	width: 260px;
+}
+
+#startBtn:hover {
+	font-family: 'Bangers', cursive;
+	font-size: 24px;
+	background-color: red;
+	color: yellow;
+}
+
+.instructions{
+	margin-top: 50px;
+	margin-left: 20px;
+	font-size: 40px;
+	font-family: 'Bangers', cursive; ;
+}
+
+#theTimer{
+	font-size: 40px;
+	position: fixed;
+	top: 20px;
+	left: 80px;
+}
+
+#message{
+	position: absolute;
+	font-family: 'Bangers', cursive;
+	font-size: 30px;
+	margin-top: 200px;
+	margin-left: 400px;
+}

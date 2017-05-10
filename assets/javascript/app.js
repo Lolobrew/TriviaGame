@@ -34,9 +34,9 @@ var theCorrectAnswer = questionsArray[counter].correctAnswer;
 console.log("the correct answer value: " + theCorrectAnswer);
 
 
+//initial display when game is started
 function displayStuff(){
 
-	counter = 0;
 	//set the question to the html div
 	$('.thequestion').text(theQuestion);
 
@@ -53,97 +53,168 @@ function displayStuff(){
 //closes displayStuff()	
 }	
 	
+
+
 $(document).ready(function(){
 	
 
 	//hide the message div
 	$('#message').hide();
 
+	//hide the timer div
+	$('#theTimer').hide();
+
 	
 
 	$('#btn').click(startGame);
 
 
+
 //closing tags for doc ready
 });
 
+
+//starts game on the first display
 function startGame(){
+
+	$('#theTimer').html(15);
+
 	$('#btn').hide();
 
-	setTimeout(displayStuff, 3000);
+	$('#theTimer').show();
 
+		
 	//display answer and choices 
 	displayStuff();
 
+
+	var timer = setInterval(function() {
+		var count = parseInt($('#theTimer').html());
+    	if (count !== 0) {
+    		$('#theTimer').html(count - 1);
+    	} else if( count === 0){
+    		clearInterval(timer);
+			wrongTimeUp();
+			totalGuesses--;
+			nextQuestion();
+		} else {
+      		clearInterval(timer);
+   		 }
+ 	 }, 1000);
+	
+
 	//on input click
 	$('input').click(function(){
 	
 		var theValue = $('input:checked').val();
 		console.log("the value of selected input: " + theValue);
 
+
 		if(theValue == theCorrectAnswer){
 			correctGuesses++;
 			goodGuess();
+			nextQuestion();
 			totalGuesses--;
-			clearInterval(displayStuff);
-
-		} else if (timeOut === 0){
-			wrongTimeUp();
-			totalGuesses--;
-			
+			clearInterval(timer);
 		} else{
 			totalGuesses--;
 			wrongTimeUp();
-			clearInterval(displayStuff);
+			clearInterval(timer);		
 			
 		}
 
 	});
+
 }
 
 
-
+//runs all proceeding games/displays after start game
 function nextQuestion(){
+
+	$('#theTimer').html(15);
+
+	$('#theTimer').show();
+
+	$(document).find($('li').remove());
+
 	counter++;
 
+
+
+	//initialize variables
+var theQuestion = questionsArray[counter].question;
+var theAnswers = questionsArray[counter].allAnswers;
+var theCorrectAnswer = questionsArray[counter].correctAnswer;
+console.log("the correct answer value: " + theCorrectAnswer);
+
 	$('#btn').hide();
-
-	setInterval(displayStuff, 3000);
-
+	
 	//display answer and choices 
+	//set the question to the html div
+	$('.thequestion').text(theQuestion);
 
-	//on input click
+	//for loop to get answers
+	var yourChoices;
+	for (var i = 0; i < theAnswers.length; i++) {
+		yourChoices = theAnswers[i];
+
+		//add each answer as a list item with a radio button, append to answers in html	
+		$('<li><input type = "checkbox" value = '+ i +' />' + yourChoices + '</li>').appendTo($('.answers'));
+
+	//closes for loop	
+	}
+
+
+	var timer = setInterval(function() {
+		var count = parseInt($('#theTimer').html());
+    	if (count !== 0) {
+    		$('#theTimer').html(count - 1);
+    	} else if( count === 0){
+    		clearInterval(timer);
+			timeUp(wrongTimeUp);
+			totalGuesses--;
+			nextQuestion();
+		} else {
+      		clearInterval(timer);
+   		 }
+ 	 }, 1000);
+	
+
+		//on input click
 	$('input').click(function(){
 	
 		var theValue = $('input:checked').val();
 		console.log("the value of selected input: " + theValue);
 
+
+
 		if(theValue == theCorrectAnswer){
 			correctGuesses++;
-			goodGuess();
-			totalGuesses--;
+			clearInterval(timer);
+			timeUp(goodGuess);
 			nextQuestion();
-			
+			totalGuesses--;				
 		} else{
 			totalGuesses--;
-			wrongTimeUp();
-			nextQuestion();
-			
+			wrongTimeUp();			
 		}
 
 	});
+
+
 }
 
+function timeUp(funct){
+	setTimeout(funct, 2000);
+}
 
 function goodGuess (){
-	setTimeout(nextQuestion, 2000);
 	$('.wrapper').hide();
 	$('#message').text("That's right!");
 	$('#message').show();
 }
 
 function wrongTimeUp (){
-	setTimeout(nextQuestion, 2000);
 	$('.wrapper').hide();
 	$('#message').text("Sorry, the right answer is " + theCorrectAnswer + ".");
 	$('#message').show();
