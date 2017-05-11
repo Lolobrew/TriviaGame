@@ -11,12 +11,14 @@
 	
 </head>
 <body>
-<div id = "left"><img src = "assets/images/wolverine.jpg"></div>
-<div id ="right2"><img src = "assets/images/ironman.gif"></div>
-<div id = "right"><img src = "assets/images/rocket.jpg"></div>
-<div id = "left2"><img src = "assets/images/mystique.jpg"></div>
-<div id = "right3"><img src = "assets/images/ghostrider.gif"></div>
-<div class = "wrapper">
+<div id = "left">
+	<img id = "wolverine" src = "assets/images/wolverine.jpg"/>
+</div>
+<div class = "hidden" id = "right">
+	<img id = "rocket" src = "assets/images/rocket.jpg"/>
+</div>
+
+<div class = "hidden" id = "wrapper">
 	<h2>Why did Deadpool join the Weapon X program?</h2>
 	<br>
 	<ul>
@@ -32,7 +34,7 @@
 		<li>
 			<input type="checkbox" value = "qst1" id="qst1ans4" data = "He was taken against his will."><label for="qst1ans4">He was taken against his will.</label>
 		</li>
-	<ul>	
+	</ul>	
 	<br><br><br>
 		<h2>What is Daredevil's real name?</h2>
 	<br>
@@ -49,7 +51,7 @@
 		<li>
 			<input type="checkbox"  value = "qst2" id="qst2ans4" data = "Lawyer McLawyerson"><label for="qst2ans4">Lawyer McLawyerson</label>
 		</li>
-	<ul>
+	</ul>
 	<br><br><br>
 		<h2>What is the signature ship of S.H.I.E.L.D.?</h2>
 	<br>
@@ -66,7 +68,7 @@
 		<li>
 			<input type="checkbox" value = "qst3" id="qst3ans4" data = "The Skypad"><label for="qst3ans4">The Skypad</label>
 		</li>
-	<ul>
+	</ul>
 	<br><br><br>
 		<h2>In which comic series did The Wolverine make his debut?</h2>
 	<br>
@@ -83,7 +85,7 @@
 		<li>
 			<input type="checkbox" value = "qst4" id="qst4ans4" data = "X-Men"><label for="qst4ans4">X-Men</label>
 		</li>
-	<ul>
+	</ul>
 	<br><br><br>
 		<h2>Of what race of superhumans is Thanos?</h2>
 	<br>
@@ -100,7 +102,7 @@
 		<li>
 			<input type="checkbox" value = "qst5" id="qst5ans4" data = "Titanian Eternals"><label for="qst5ans4">Titanian Eternals</label>
 		</li>
-	<ul>
+	</ul>
 	<br><br><br>
 		<h2>What is Captain America's shield made out of?</h2>
 	<br>
@@ -117,7 +119,7 @@
 		<li>
 			<input type="checkbox" value = "qst6" id="qst6ans4" data = "The Skypad"><label for="qst6ans4">The Skypad</label>
 		</li>
-	<ul>
+	</ul>
 	<br><br><br>
 		<h2>Who is Star-Lord's father?</h2>
 	<br>
@@ -134,7 +136,7 @@
 		<li>
 			<input type="checkbox" value = "qst7" id="qst7ans4" data = "Mentor"><label for="qst7ans4">Mentor</label>
 		</li>
-	<ul>
+	</ul>
 	<br><br><br>
 		<h2>Which of these characters is on the founding team of The Defenders?</h2>
 	<br>
@@ -151,7 +153,7 @@
 		<li>
 			<input type="checkbox" value = "qst8" id="qst8ans4" data = "Dr. Strange"><label for="qst8ans4">Dr. Strange</label>
 		</li>
-	<ul>
+	</ul>
 	<br><br><br>
 		<h2>With what military branch did Frank Castle serve?</h2>
 	<br>
@@ -168,7 +170,7 @@
 		<li>
 			<input type="checkbox" value = "qst9" id="qst9ans4" data = "Airforce"><label for="qst9ans4">Airforce</label>
 		</li>
-	<ul>
+	</ul>
 	<br><br><br>
 		<h2>What person is the chararacter Iron Man based off of?</h2>
 	<br>
@@ -185,20 +187,27 @@
 		<li>
 			<input type="checkbox" value = "qst10" id="qst10ans4" data = "Richard Branson"><label for="qst10ans4">Richard Branson</label>
 		</li>
-	<ul>
+	</ul>
 	<br><br><br>
 </div>
 
-<h3 id = "theTimer">60</h3>
+<div id = "timer">
+	<h3 class= "hidden" id = "theTimer">60</h3>
+</div>
 
-<h4 class = "instructions">Welcome to the Marvel Universe Quiz! Upon clicking the START button, 10 questions will be displayed. You will have a minute to guess as many right as you can! And remember: "You're much stronger than you think you are. Trust me." - Spiderman</h4>
+<h4 id = "instructions">Welcome to the Marvel Universe Quiz! Upon clicking the START button, 10 questions will be displayed. You will have a minute to guess as many right as you can! And remember: "You're much stronger than you think you are. Trust me." - Spiderman</h4>
 
 <div class = "starter">
 	<button id = "startBtn">START</button>
 </div>
 
-<h3 id = "message"></h3>
-<div id = "bottom"><img src = "assets/images/Deadpool.jpg"></div>
+<h3 class = "hidden" id = "message"></h3>
+
+<div class = "hidden" id = "bottom">
+	<img src = "assets/images/Deadpool.jpg"/>
+</div>
+
+
 
 
 

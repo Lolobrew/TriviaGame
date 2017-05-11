@@ -1,48 +1,49 @@
 
-
-
-#left img {
-	width: 50%;
-	height:50%;
-}
-
-#left2 img{
-	position: relative;
-	top: 5px;
+#left {
 	float: left;
 }
 
-#right2 img {
-float: right;
+#wolverine{
+	margin-top: 40px;
 }
 
-#right3 img {
-	position: absolute;
-	top: 1350px;
-	left: 1050px;
-	height: 300px;
-	width: 350px;
+.pint {
+	height: 40%;
+	width: 40%;
 }
 
-#right img {
+.big {
+	height: 100%;
+	width: 100%;
+	margin-top: 40px;
+}
+
+#right{
 	float: right;
-
-}
-
-#bottom img {
-	clear: both;
-	width: 35%;
-	height:35%;
 	position: relative;
-	top: 1035px;
-
+	top: 650px;
 }
 
-#left{
-	float: left;
-	margin-right: 0px;
+#bottom {
+	clear:both;
+	position: relative;
+	top: 800px;
+	left: 400px;
 }
 
+#bottom img{
+	height: 40%;
+	width: 40%;
+}
+
+
+#wrapper {
+	position: absolute;
+	margin-top: 50px;
+	margin-left: 300px;
+	text-align: center;
+	width: 800px;
+}
 
 ul{
 	padding-top: 40px;
@@ -55,13 +56,6 @@ li{
 	padding-right: 20px;
 }
 
-.wrapper {
-	clear: left;
-	position: absolute;
-	text-align: center;
-	margin-top: 50px;
-	margin-left: 350px;
-}
 
 h2{
 	font-family: 'Bangers', cursive;
@@ -89,11 +83,16 @@ h2{
 	color: yellow;
 }
 
-.instructions{
+#instructions{
 	margin-top: 50px;
 	margin-left: 20px;
 	font-size: 40px;
 	font-family: 'Bangers', cursive; ;
+}
+
+#timer{
+	height: 75px;
+	width: 75px;
 }
 
 #theTimer{
@@ -107,6 +106,6 @@ h2{
 	position: absolute;
 	font-family: 'Bangers', cursive;
 	font-size: 30px;
-	margin-top: 200px;
-	margin-left: 400px;
+	margin-top: 150px;
+	margin-left: 600px;
 }

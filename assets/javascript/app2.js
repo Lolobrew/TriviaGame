@@ -2,31 +2,44 @@
 		
 $(document).ready(function(){
 
+	     	//correct guesses
+	var correct = 0;
+	var wrong = 0;
+
 	//hide elements
-	$('.wrapper').hide();
-	$('#message').hide();
-	$('#theTimer').hide();
-	$('#bottom').hide();
-	$('#right').hide();
-	$('#right2').hide();
-	$('#right3').hide();
-	$('#left2').hide();
+	$('.hidden').hide();
 	//start the quiz
 	$('#startBtn').click(function(){
 
 	//show elements, hide button
-	$('.wrapper').show();
-	$('#theTimer').show();
+	$('.hidden').show();
+	$('#wolverine').toggleClass('pint');
 	$(this).hide();
-	$('.instructions').hide();
-	$('#bottom').show();
-	$('#right').show();
-	$('#right2').show();
-	$('#right3').show();
-	$('#left2').show();
+	$('#instructions').hide();
+	$('#message').hide();
+	//set timer to 60
+	$('#theTimer').html(60);
+	//remove all checked checkboxes
+	$('input').prop('checked', false);
 
-	
+	    //start timer
+	var timer = setInterval(function() {
+		var count = parseInt($('#theTimer').html());
+    	if (count !== 0) {
+    		$('#theTimer').html(count - 1);
+    	} else if( count === 0){
+    		clearInterval(timer);
+    		$('.hidden').hide();
+    		$('#message').text("Uh-oh! Time is up and The Time-Keepers have you now! You got  " + correct + " / 10!");
+    		$('#message').show();
+    		$('#startBtn').show();
+    		$('#wolverine').toggleClass('pint');
+		} else {
+   			clearInterval(timer);
+		}
+ 	}, 1000);
 
+        	
 	//only allow one input to be checked
 	$('input').on('change', function () {
     	$('input').prop('disabled',false).filter(':checked').each(function() {
@@ -35,10 +48,7 @@ $(document).ready(function(){
 	});       
         	
 
-       	//correct guesses
-			var correct = 0;
-			var wrong = 0;
-			
+  			
 			$('input[type="checkbox"]').click(function(){
 
 				//check to see how many inputs are checked
@@ -84,49 +94,22 @@ $(document).ready(function(){
         			//if the number of checked inputs = 10
         		} if (checked >= 10){
         			clearInterval(timer);
-        			$('.wrapper').hide();
-        			$('#theTimer').hide();
-        			$('#bottom').hide();
-        			$('#right2').hide();
-        			$('#left2').hide();
-        			$('#right3').hide();
-    				$('#message').text("Whoah there Ultron! You missed a couple. You got  " + correct + " / 10!");
+        			$('.hidden').hide();
+    				$('#message').text("Whoah there Ultron! You missed a couple. You got  " + correct + " / 10! Would you like to try again?");
     				$('#message').show();
+    				$('#startBtn').show();
+    				$('#wolverine').toggleClass('pint');
     				//if correct answers = 10
         		} if (correct >= 10){
         			clearInterval(timer);
-    				$('.wrapper').hide();
-    				$('#theTimer').hide();
-    				$('#bottom').hide();
-    				$('#right2').hide();
-    				$('#right3').hide();
-    				$('#left2').hide();
-	    			$('#message').text("You're quicker than Quicksilver! You got  " + correct + " / 10!");
+    				$('.hidden').hide();
+	    			$('#message').text("You're quicker than Quicksilver! You got  " + correct + " / 10! Would you like to try again?");
 	    			$('#message').show();
+	    			$('#startBtn').show();
+	    			$('#wolverine').toggleClass('pint');
         		}
 
-        	});
-        		 
-    //start timer
-	var timer = setInterval(function() {
-		var count = parseInt($('#theTimer').html());
-    	if (count !== 0) {
-    		$('#theTimer').html(count - 1);
-    	} else if( count === 0){
-    		clearInterval(timer);
-    		$('.wrapper').hide();
-    		$('#theTimer').hide();
-    		$('#bottom').hide();
-    		$('#right2').hide();
-    		$('#right3').hide();
-    		$('#message').text("Uh-oh! Time is up and The Time-Keepers have you now! You got  " + correct + " / 10!");
-    		$('#message').show();
-		} else {
-   			clearInterval(timer);
-		}
- 	}, 1000);
-
-        	
+        	});    		 
 
 	
 
