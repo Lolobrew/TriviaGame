@@ -11,7 +11,7 @@ $(document).ready(function(){
 	//start the quiz
 	$('#startBtn').click(function(){
 
-	//show elements, hide button
+	//show elements, hide button and instructions
 	$('.hidden').show();
 	$('#wolverine').toggleClass('pint');
 	$(this).hide();
@@ -21,13 +21,18 @@ $(document).ready(function(){
 	$('#theTimer').html(60);
 	//remove all checked checkboxes
 	$('input').prop('checked', false);
+    //move to top of doc
+    window.scrollTo(0,0);
 
 	    //start timer
 	var timer = setInterval(function() {
 		var count = parseInt($('#theTimer').html());
     	if (count !== 0) {
+    		//count down
     		$('#theTimer').html(count - 1);
+    		//if time is up
     	} else if( count === 0){
+            window.scrollTo(0,0);
     		clearInterval(timer);
     		$('.hidden').hide();
     		$('#message').text("Uh-oh! Time is up and The Time-Keepers have you now! You got  " + correct + " / 10!");
@@ -94,6 +99,7 @@ $(document).ready(function(){
         			//if the number of checked inputs = 10
         		} if (checked >= 10){
         			clearInterval(timer);
+                    window.scrollTo(0,0);
         			$('.hidden').hide();
     				$('#message').text("Whoah there Ultron! You missed a couple. You got  " + correct + " / 10! Would you like to try again?");
     				$('#message').show();
@@ -102,6 +108,7 @@ $(document).ready(function(){
     				//if correct answers = 10
         		} if (correct >= 10){
         			clearInterval(timer);
+                    window.scrollTo(0,0);
     				$('.hidden').hide();
 	    			$('#message').text("You're quicker than Quicksilver! You got  " + correct + " / 10! Would you like to try again?");
 	    			$('#message').show();
