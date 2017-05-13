@@ -97,7 +97,7 @@ $(document).ready(function(){
         				console.log("wrong: " + wrong);
         			}
         			//if the number of checked inputs = 10
-        		} if (checked >= 10){
+        		} if (checked >= 10 && correct < 10){
         			clearInterval(timer);
                     window.scrollTo(0,0);
         			$('.hidden').hide();
@@ -106,7 +106,7 @@ $(document).ready(function(){
     				$('#startBtn').show();
     				$('#wolverine').toggleClass('pint');
     				//if correct answers = 10
-        		} if (correct >= 10){
+        		} if (checked >= 10 && correct >= 10){
         			clearInterval(timer);
                     window.scrollTo(0,0);
     				$('.hidden').hide();
