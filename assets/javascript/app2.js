@@ -1,13 +1,11 @@
 
-		
+	
 $(document).ready(function(){
-
-	     	//correct guesses
-	var correct = 0;
-	var wrong = 0;
 
 	//hide elements
 	$('.hidden').hide();
+    //remove all checked checkboxes
+    $('input').prop('checked', false);
 	//start the quiz
 	$('#startBtn').click(function(){
 
@@ -23,6 +21,11 @@ $(document).ready(function(){
 	$('input').prop('checked', false);
     //move to top of doc
     window.scrollTo(0,0);
+
+               //correct guesses
+    var correct = 0;
+    var wrong = 0;
+
 
 	    //start timer
 	var timer = setInterval(function() {
